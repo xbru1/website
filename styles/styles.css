@@ -7,6 +7,7 @@
     --main-color: #f2f2f2;
     --text-color: #000000;
     --text-shadow-color-light: #dbabff;
+    --text-shadow-color-light-alt: #7bd966;
     --text-shadow-color-dark: #000000;
     --border-color-light: #ffffff;
     --border-color-dark: #000000;
@@ -21,9 +22,9 @@ body {
     background-color: var(--bg-color-normal);
 }
 
+/* Justify images to the center and allow them to automatically set their margins and height, but specify width*/
 img {
     justify-content: center;
-    align-content: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -33,6 +34,7 @@ img {
     border-radius: 0.5rem;
 }
 
+/* The header is centered and has a small amount of padding around it*/
 h1 {
     color: var(--main-color);
     justify-content: center;
@@ -41,20 +43,22 @@ h1 {
     margin: 0;
 }
 
+/* The nav also needs to be centered, and its items inside need to be as well */
 nav {
     justify-content: center;
     align-items: center;
     display: flex;
     background-color: var(--bg-color-dark);
-    /*border: 0.25vh solid var(--border-color-light);*/
 }
 
+/* Navbar links should have some padding and no margin so that they are easy to use */
 nav a {
     margin: 0;
     color: var(--bg-color-light);
     background-color: var(--bg-color-dark);
     padding: 0.5vw;
     text-decoration: none;
+    /* Expand and start glowing on hover */
     &:hover {
         color: var(--bg-color-dark);
         background-color: var(--bg-color-light);
@@ -72,7 +76,7 @@ nav a[href="./"]:not(:first-child) {
     }
 }
 
-/*  */
+/* The main content has margins on each side so that it is easier to read, and a minimum height to ensure the footer always remains at the bottom */
 main {
     margin-left: 20vw;
     margin-right: 20vw;
@@ -86,7 +90,7 @@ main {
     background-color: var(--main-color);
 }
 
-/* Footer should appear at the bottom */
+/* Footer should always appear at the bottom and never be visible from the top of the page*/
 footer {
     justify-content: center;
     align-items: center;
@@ -97,14 +101,15 @@ footer {
     margin: 0;
     width: 95%;
     height: 3vh;
-    /*position: fixed;*/
     margin-top: auto;
     left: 0;
     bottom: 0;
     padding: 2.5%;
 }
 
-/* Yellow/Black Stripe pattern, apply the "construction" class to a tag to use */
+/* Below are some useful classes that apply cool effects, simply apply their respective class to an element to use */
+
+/* Yellow/Black Stripe background pattern */
 .construction {
     background-image: repeating-linear-gradient(45deg, var(--bg-color-special) 0, var(--bg-color-special) 10% 0, var(--bg-color-dark) 0, var(--bg-color-dark) 20% 0);
 }
@@ -114,6 +119,12 @@ footer {
     text-shadow: 0 0 0.4em var(--text-shadow-color-light), 0 0 0.2em var(--text-shadow-color-light);
 }
 
+/* Text within a <span> glows differently */
+span.glowing {
+    text-shadow: 0 0 0.4em var(--text-shadow-color-light-alt), 0 0 0.2em var(--text-shadow-color-light-alt);
+}
+
+/* Text with a black shadow around it */
 .shadow {
     text-shadow: 0 0 0.2em var(--text-shadow-color-dark),
 }
