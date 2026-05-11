@@ -4,8 +4,8 @@
     --bg-color-light: #ccccff;
     --bg-color-dark: #262626;
     --bg-color-special: #c1a54a;
-    --main-color: #f2f2f2;
-    --text-color: #000000;
+    --main-color: #f2f2f2; /* Background color of the background of the <main> tag */
+    --text-color: #000000; /* Primary text color */
     --text-shadow-color-light: #dbabff;
     --text-shadow-color-light-alt: #7bd966;
     --text-shadow-color-dark: #000000;
@@ -30,7 +30,7 @@ img {
     margin-right: auto;
     width: 30%;
     height: auto;
-    border: 1rem inset var(--bg-color-special);
+    border: 1rem outset var(--bg-color-special);
     border-radius: 0.5rem;
 }
 
@@ -39,7 +39,7 @@ h1 {
     color: var(--main-color);
     justify-content: center;
     display: flex;
-    padding: 1.5%;
+    padding: 0.5%;
     margin: 0;
 }
 
@@ -68,7 +68,7 @@ nav a {
 }
 
 /* Make all NYI links red, making sure to ignore the Home link which should be the first link in the navbar */
-nav a[href="./"]:not(:first-child) {
+nav a[href="./"]:not(:first-child), a[href="../"]:not(:first-child) {
     color: var(--nyi-color);
     &:hover {
         color: var(--bg-color-normal);
@@ -78,13 +78,11 @@ nav a[href="./"]:not(:first-child) {
 
 /* The main content has margins on each side so that it is easier to read, and a minimum height to ensure the footer always remains at the bottom */
 main {
-    margin-left: 20vw;
-    margin-right: 20vw;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin: 5vh 20vw 5vh 20vw;
     min-height: 90vh;
-    border: 1rem inset var(--bg-color-dark);
+    border: 1rem outset var(--bg-color-dark);
     border-radius: 0.5rem;
+    box-shadow: 0 0 1em var(--bg-color-dark);
     padding: 1%;
     color: var(--text-color);
     background-color: var(--main-color);
@@ -99,12 +97,13 @@ footer {
     color: var(--main-color);
     background-color: var(--bg-color-dark);
     margin: 0;
-    width: 95%;
-    height: 3vh;
+    width: 98%;
+    height: auto;
     margin-top: auto;
     left: 0;
     bottom: 0;
-    padding: 2.5%;
+    padding: 1%;
+    border-top: 1em solid var(--bg-color-dark);
 }
 
 /* Below are some useful classes that apply cool effects, simply apply their respective class to an element to use */
@@ -112,19 +111,49 @@ footer {
 /* Yellow/Black Stripe background pattern */
 .construction {
     background-image: repeating-linear-gradient(45deg, var(--bg-color-special) 0, var(--bg-color-special) 10% 0, var(--bg-color-dark) 0, var(--bg-color-dark) 20% 0);
+    border-bottom: 1em solid var(--bg-color-dark);
 }
 
 /* Text that is glowing */
 .glowing {
-    text-shadow: 0 0 0.4em var(--text-shadow-color-light), 0 0 0.2em var(--text-shadow-color-light);
+    text-shadow: 0 0 0.6em var(--text-shadow-color-light), 0 0 0.4em var(--text-shadow-color-light), 0.2em 0.2em 0.2em var(--text-shadow-color-dark);
+    -webkit-text-stroke: 0.025em var(--text-shadow-color-light);
 }
 
 /* Text within a <span> glows differently */
 span.glowing {
     text-shadow: 0 0 0.4em var(--text-shadow-color-light-alt), 0 0 0.2em var(--text-shadow-color-light-alt);
+    -webkit-text-stroke: 0.025em var(--text-shadow-color-light-alt);
 }
 
 /* Text with a black shadow around it */
 .shadow {
-    text-shadow: 0 0 0.2em var(--text-shadow-color-dark),
+    text-shadow: 0 0 0.2em var(--text-shadow-color-dark);
+}
+
+/* Footer and h1 flexboxes */
+footer div, h1 div, .flexbox {
+    background-color: var(--bg-color-dark);
+    padding: 1em;
+    border: 0.5em outset white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em var(--text-shadow-color-dark);
+    justify-content: center;
+    text-align: center;
+}
+
+/* Move these below to a better location once Week 4 is graded */
+footer div {
+    margin: auto;
+}
+
+footer a {
+    color: white;
+}
+
+.columns {
+    columns: 3 50vh;
+    column-height: auto;
+    column-gap: 5%;
+    column-rule: dotted 0.5em var(--bg-color-dark);
 }
