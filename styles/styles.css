@@ -88,7 +88,7 @@ main {
     padding: 1%;
     color: var(--text-color);
     background-color: var(--main-color);
-    transition: 0.15s;
+    transition: linear 0.15s;
     object-fit: contain;
 }
 
@@ -155,12 +155,21 @@ footer a {
     color: white;
 }
 
+/* Column class with multiple columns*/
 .columns {
-    columns: 3 50vh;
+    columns: 3;
     column-gap: 5%;
     column-rule: dotted 0.5em var(--bg-color-dark);
 }
 
+/* Columns  */
+@media screen and (max-width: 800px) {
+    .columns {
+        columns: 2;
+    }
+}
+
+/* Grid class that can be applied to a container div */
 .grid {
     display: grid;
     justify-items: center;
@@ -168,6 +177,7 @@ footer a {
     padding: 1em;
 }
 
+/* Grid items */
 .grid div, .grid a {
     background-color: var(--bg-color-dark);
     color: var(--main-color);
