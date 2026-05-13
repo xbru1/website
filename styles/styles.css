@@ -30,7 +30,7 @@ img {
     object-fit: contain;
     margin: auto;
     width: 50%;
-    height: 50%;
+    height: auto;
     border: 1rem outset var(--bg-color-special);
     border-radius: 0.5em;
 }
