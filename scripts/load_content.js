@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // 
     if (window.location.href.includes("github")) {
         depth -= 1;
-        github = true;
     }
 
     for (var i = 0; i < navLinks.length; i++) {
@@ -45,6 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 navLinks[i][0] = "/" + navLinks[i][0];
             }
             navLinks[i][0] = ".." + navLinks[i][0];
+        }
+
+        if (navLinks[i][0] == "/") {
+            navLinks[i][0] = "." + navLinks[i][0];
         }
 
         // Add navbar links
