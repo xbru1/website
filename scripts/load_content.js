@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             navLinks[i][0] = ".." + navLinks[i][0];
         }
 
-        if (navLinks[i][0] == "/") {
+        if (navLinks[i][0].charAt(0) == "/") {
             navLinks[i][0] = "." + navLinks[i][0];
         }
 
