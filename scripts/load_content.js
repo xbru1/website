@@ -23,13 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
     var navbar = document.createElement("nav");
     var footer = document.createElement("footer");
     var depth = (window.location.pathname.split("/").length - 2);
+    var github = false;
 
     body.prepend(header);
     header.append(headerDiv);
     header.setAttribute("class", "construction glowing");
     headerDiv.append(document.createTextNode(document.getElementsByTagName("title")[0].textContent));
     body.prepend(navbar);
-    body.append(footer);
+    body.append(footer);    
+
+    // 
+    if (window.location.href.includes("github")) {
+        depth -= 1;
+        github = true;
+    }
 
     for (var i = 0; i < navLinks.length; i++) {
         // Calculate the relative path to each link
