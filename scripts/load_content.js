@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ["These boxes are pretty cool"],
         ["Website source code here", "https://github.com/xbru1/website"]
     ];
+
     
     // Preparation
     const body = document.getElementsByTagName("body")[0];
@@ -67,4 +68,5 @@ document.addEventListener("DOMContentLoaded", function () {
         footer.setAttribute("class", "construction glowing");
     }
     console.log("Loaded");
+    console.log(navLinks);
 });
