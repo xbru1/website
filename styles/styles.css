@@ -275,6 +275,18 @@ main h2 {
     }
 }
 
+/* Make main take up almost the whole screen at this low of a width */
+@media screen and (max-width: 600px) {
+    main {
+        width: 95%;
+        margin: 0;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        border-radius: 0px; 
+        border: none;
+    }
+}
+
 .flipcard {
     justify-content: center;
     align-items: center;
@@ -289,7 +301,7 @@ main h2 {
     margin-top: 3%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
     .flipcard {
         height: 12em;
     }
@@ -332,7 +344,7 @@ main h2 {
     color: var(--bg-color-light);
 }
 
-/* Back side is pre-rotated */
+/* Back side is pre-rotated *
 .flipcard-back {
     transform: rotateY(180deg);
     background-color: var(--main-color);
