@@ -311,12 +311,14 @@ main h2 {
 
 /* Flipcards, note that their height will not automatically adjust */
 
+/* Rotate when hovering */
 .flipcard:hover {
     .flipcard-inner {
         transform: rotateY(180deg);
     }
 }
 
+/* Make sure that the two card sides overlap and do not show their back side */
 .flipcard-front, .flipcard-back {
     position: absolute;
     width: 100%;
@@ -330,6 +332,7 @@ main h2 {
     color: var(--bg-color-light);
 }
 
+/* Back side is pre-rotated */
 .flipcard-back {
     transform: rotateY(180deg);
     background-color: var(--main-color);
