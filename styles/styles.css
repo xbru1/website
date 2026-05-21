@@ -344,7 +344,7 @@ main h2 {
     color: var(--bg-color-light);
 }
 
-/* Back side is pre-rotated *
+/* Back side is pre-rotated */
 .flipcard-back {
     transform: rotateY(180deg);
     background-color: var(--main-color);
