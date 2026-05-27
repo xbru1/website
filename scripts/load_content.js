@@ -6,18 +6,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add new links to the navbar by adding new elements to this array, relative pathings for each page will be automatically determined
     var navLinks = [
+        ["javascript:;", "☰ Xadrian's Site"], // It is necessary to have this link call Javascript with no actual code, otherwise this link will lead somewhere and won't work as intended
         ["/", "Home"],        
-        ["/pages/page.html", "Test Page"],        
-        ["/pages/wikipedia.html", "Strange Wikipedia Articles"],        
-        ["/", "NYI"]
+        ["/pages/games.html", "Odd Games"],                
+        ["/pages/cities.html", "Homonymous Cities"],        
+        ["/pages/wikipedia.html", "Strange Wikipedia Articles"] 
     ];
 
     // Add new footer boxes by adding new elements here, the second element in an array will indicate a hyperlink if present
     var footerItems = [
-        ["Pages and styling to be finished soon"],
         ["Website by Xadrian Brumley"],
-        ["These boxes are pretty cool"],
-        ["Website source code here", "https://github.com/xbru1/website"]
+        ["No generative AI was used in the making of this website"],
+        ["Website source code available here", "https://github.com/xbru1/website"]
     ];
 
     
@@ -42,9 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
         depth -= 1;
     }
 
+    // The first link is always meant to expand the nav
     for (var i = 0; i < navLinks.length; i++) {
         // Calculate the relative path to each link
         for (var j = 1; j <= depth; j++) {
+
+            if (i == 0) {
+                break;
+            }
             if (j % 2 == 0) {
                 navLinks[i][0] = "/" + navLinks[i][0];
             }
@@ -80,7 +85,15 @@ document.addEventListener("DOMContentLoaded", function () {
             div.append(document.createTextNode(footerItems[i][0]));
             footer.append(div);
         }
-
-        footer.setAttribute("class", "construction glowing");
+        footer.setAttribute("class", "construction");
     }
+
+    // Expand the navbar at lower widths when the top bar is clicked
+    navbar.firstChild.addEventListener("click", function() {
+        if (navbar.className.includes("expanded")) {
+            navbar.className = "";
+        } else {
+            navbar.className += "expanded";
+        }
+    });
 });
