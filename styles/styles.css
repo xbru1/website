@@ -43,7 +43,7 @@ h1 {
     color: var(--main);
     justify-content: center;
     display: flex;
-    padding: 0.5%;
+    padding: 0.25%;
     margin: 0;
 }
 
@@ -71,6 +71,11 @@ nav a {
         background-color: var(--bg-light);
         transform: scale(1.1);
         transition: 0.25s;        
+    }
+
+    &.active {
+        color: var(--bg-dark);
+        background-color: var(--bg-light);
     }
 }
 
@@ -112,7 +117,7 @@ footer {
     left: 0;
     bottom: 0;
     padding: 1%;
-    border-top: 1em solid var(--bg-dark);
+    border-top: 0.5em solid var(--bg-dark);
 }
 
 /* Below are some useful classes that apply cool effects, simply apply their respective class to an element to use */
@@ -120,7 +125,7 @@ footer {
 /* Yellow/Black Stripe background pattern */
 .construction {
     background-image: repeating-linear-gradient(45deg, var(--bg-special) 0, var(--bg-special) 10% 0, var(--bg-dark) 0, var(--bg-dark) 20% 0);
-    border-bottom: 1em solid var(--bg-dark);
+    border-bottom: 0.5em solid var(--bg-dark);
 }
 
 /* Text that is glowing */
@@ -143,9 +148,9 @@ span.glowing {
 /* Footer and h1 flexboxes */
 footer div, h1 div, .flexbox {
     background-color: var(--bg-dark);
-    padding: 1em;
+    padding: 0.25em;
     margin: auto;
-    border: 0.5em outset white;
+    border: 0.35em outset white;
     border-radius: 0.25em;
     box-shadow: 0 0 1em var(--text-shadow-dark);
     justify-content: center;
@@ -223,7 +228,7 @@ main a {
 
 /* Header formatting under main */
 main h2 {
-    text-align: center;
+    text-align: left;
     margin-top: 1em;
     margin-bottom: 1em;
     padding-top: 0.5em;

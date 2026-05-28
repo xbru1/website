@@ -66,6 +66,15 @@ document.addEventListener("DOMContentLoaded", function () {
         a.setAttribute("href", navLinks[i][0]);
         a.append(document.createTextNode(navLinks[i][1]));
         navbar.append(a);
+
+        var link = navLinks[i][0].split("/");
+        if (link[link.length - 1] == window.location.pathname.split("/")[window.location.pathname.split("/").length - 1]) {
+            console.log(navLinks[i][0]);
+            console.log(window.location.pathname);
+            a.setAttribute("class", "active");
+        }
+
+        // TODO: Add breadcrumbs
     }
 
     // Add footer
