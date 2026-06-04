@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     body.prepend(header);
     favicon.setAttribute("rel", "icon");
-    favicon.setAttribute("href", findRelativePath("/assets/icon.png", depth));
     body.append(favicon);
     header.append(headerDiv);
     header.setAttribute("class", "construction glowing science-gothic-bold");
@@ -67,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.location.href.includes("github")) {
         depth -= 1;
     }
+
+    favicon.setAttribute("href", findRelativePath("/assets/icon.png", depth));
 
     // The first link is always meant to expand the nav
     for (var i = 0; i < navLinks.length; i++) {
