@@ -459,3 +459,14 @@ li {
 .leaflet-container img {
     border: none;
 }
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+}
+
+tr, th, td {
+    border: 0.1em solid var(--bg-dark);
+    text-align: left;
+}
+
