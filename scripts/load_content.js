@@ -1,10 +1,11 @@
 // Code written by me without the use of AI; it took around 2 hours to get this all working as intended
 // I have worked with jQuery in the past, but I used only vanilla JavaScript here
-// This script dynamically loads the Navbar, Header, and Footer to save from changing on each page
+// This script dynamically loads the Navbar, Header, and Footer to save from it changing on each page
 
 document.addEventListener("DOMContentLoaded", function () {
 
     // Add new links to the navbar by adding new elements to this array, relative pathings for each page will be automatically determined
+    // [link, text, icon]
     var navLinks = [
         ["javascript:;", "Xadrian's Site", "fa-solid fa-square-caret-down"], // It is necessary to have this link call Javascript with no actual code, otherwise this link will lead somewhere and won't work as intended
         ["/", "Home", "fa-solid fa-house"],        

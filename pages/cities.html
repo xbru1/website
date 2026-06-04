@@ -6,8 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Homonymous City Names</title> <!-- This will also determine the header for the page -->
 	<link rel="stylesheet" href="../styles/styles.css">
+	<!-- Leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 	<!-- There is no need to include the navbar, header, or footer, as this script will automatically load them -->
 	<script src="../scripts/load_content.js"></script>
+
 </head>
 
 <body>
@@ -15,14 +19,84 @@
 		<section>
 			<p>You can actually visit Berlin, Paris, Rome, Moscow, and London, all without ever travelling to Europe, or even leaving the United States. How is this possible, you might ask?</p>
 			<p>Well, it turns that we do not actually have enough unique names for all of our cities across the globe.</p>
-			<p>Berlin is most well known as the capital of Germany, but there are actually a total of <a href="https://geotargit.com/called.php?qcity=Berlin" target="_blank">71 places named Berlin </a>worldwide?</p>
-			<img src="../assets/berlins.png" alt="Map of North and South America with the locations of various places named Berlin highlighted">
-			<figcaption>There are quite a few Berlins in the Americas alone.</figcaption>
+			<p>Berlin is most well known as the capital of Germany, but there are actually <a href="https://geotargit.com/called.php?qcity=Berlin" target="_blank">several dozen places named Berlin </a>worldwide:</p>
+			<div id="map" title="World map with 52 different locations named Berlin highlighted"></div>
+			<figcaption>Map of the world with 52 different locations named Berlin highlighted.</figcaption>
+			<figcaption>You probably get the point, I&apos;m going to stop trying to find Berlins on OpenStreetMap now.</figcaption>
 			<p>Most places that share a name with the capital of another country are home to only a few hundred to a couple thousand people, but some have larger populations. </p>
 			<p><a href="https://en.wikipedia.org/wiki/Berlin,_Connecticut">Berlin, Connecticut</a> and <a href="https://en.wikipedia.org/wiki/Berl%C3%ADn,_El_Salvador">Berlín, El Salvador</a> are home to around 20,000 people each.</p>
 			<p><a href="https://en.wikipedia.org/wiki/Moscow,_Idaho" target="_blank">Moscow, Idaho</a> is home to roughly 25,000 people and is the location of the state&apos;s primary university, the University of Idaho.</p>
 		</section>
 	</main>
 </body>
+
+<script>
+	var map = L.map('map').setView([0, 0], 2);
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+	  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+	const berlins = [
+		[9.0525951, -80.3550877], // West Virginia 
+		[44.4979009, -122.7478648], // Oregon
+		[44.48676, -71.26075], // New Hampshire
+		[39.75765, -89.90265], // Illinois
+		[41.6032, -72.7754], // Connecticut
+		[42.3844, -71.6295], // Massachussetts
+		[38.33180, -75.21093], // Maryland
+		[44.2134, -72.6017], // Vermont 
+		[39.79258, -74.93704], // New Jersey
+		[43.9855, -88.9563], // Wisconsin
+		[46.378761, -98.489322], // North Dakota
+		[39.92080, -78.95152], // Pennsylvania
+		[42.6657, -73.3703], // New York
+		[31.06792, -83.62363], // Georgia
+		[45.07620, -89.78568], // Marathon County, Wisconsin
+		[50.12893, 25.06858], // Lviv, Ukraine
+		[54.00559, 61.18766], // Chelyabinsk, Russia
+		[40.561178, -81.794335], // Ohio
+		[34.18671, -86.74893], // Alabama
+		[37.921426, -94.896079], // Bourbon County, Kansas
+		[49.865044, 22.192135], // Subcarpathian Voivodeship, Poland
+		[41.609495, -84.754400], // Williams County, Ohio
+		[4.810383, -75.681545], // Columbia
+		[-17.55374, -60.45600], // Bolivia
+		[54.036360, 10.446131], // Schleswig-Holstein, Germany
+		[-2.791912, -73.547846], // Peru
+		[33.673761, -81.303713], // Aiken County, South Carolina
+		[5.904335, -73.943752], // Colombia
+		[49.633571, 20.373004], // Lesser Poland 
+		[5.913584, -73.956931], // Colombia
+		[-11.210424, -66.064608], // Bolivia
+		[3.333966, -75.717423], // Colombia
+		[1.193607, -75.035146], // Colombia
+		[-5.588562, -78.930314], // Peru
+		[1.330173, -75.919363], // Colombia
+		[-12.945141, -73.598762], // Peru
+		[-11.208449, -67.809549], // Bolivia
+		[2.205485, -75.570848], // Colombia
+		[-12.065303, -67.396814], // Bolivia
+		[-12.7482605, -65.0165338], //
+		[ -11.6193954, -68.9323884], //
+		[5.6001155, -75.1053378], //
+		[-4.6572768, -74.7878396], // Peru
+		[-17.772839, -70.483486], //
+		[17.914328, -77.659929], // Jamaica
+		[33.0806804, -91.7631817], // Arkansas
+		[30.171327, -96.445801], // Texas
+		[35.450605, -99.625378], // Oklahoma
+		[32.259307, -87.008321], // Alabama
+		[40.053965, -94.351052], // Missouri
+		[13.50223, -88.51111], // El Salvador
+		[52.5072, 13.4246] // Germany, the original Berlin
+	];
+
+	for (var i = 0; i < berlins.length; i++) {
+		L.marker(berlins[i]).addTo(map);
+	}
+
+	console.log(berlins.length);
+</script>
 
 </html>
