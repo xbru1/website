@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function findRelativePath(link, depth) {
     for (var i = 1; i <= depth; i++) {
-        if (i % 1 == 0) {
+        if (i % 2 == 0) {
             link = "/" + link;
         }
         link = ".." + link;
