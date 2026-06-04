@@ -103,11 +103,23 @@ main {
     object-fit: contain;
 }
 
+/* Make main take up almost the whole screen at this low of a width */
+@media screen and (max-width: 600px) {
+    main {
+        width: 90%;
+        margin: 0;
+        padding-left: 5%;
+        padding-right: 5%;
+        border-radius: 0px; 
+        border: none;
+    }
+
+}
 /* Footer should always appear at the bottom and never be visible from the top of the page*/
 footer {
     justify-content: center;
     align-items: center;
-    font-style: oblique 30deg;
+    font-style: oblique 15deg;
     display: flex;
     color: var(--main);
     background-color: var(--bg-dark);
@@ -239,7 +251,6 @@ main h2 {
     }
 }
 
-/* TODO: Improve responsive design */
 @media screen and (max-width: 1200px) {
     /* Reduce the margins of main to prevent content from being squished */ 
     main {
@@ -311,20 +322,6 @@ main h2 {
     }
 }
 
-
-/* Make main take up almost the whole screen at this low of a width */
-@media screen and (max-width: 600px) {
-    main {
-        width: 90%;
-        margin: 0;
-        padding-left: 5%;
-        padding-right: 5%;
-        border-radius: 0px; 
-        border: none;
-    }
-
-
-}
 
 
 .flipcard {
@@ -437,4 +434,16 @@ li {
     .img-content-item img {
         width: 50%;
     }
+}
+
+.science-gothic-regular {
+  font-family: "Science Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.science-gothic-bold {
+  font-family: "Science Gothic", sans-serif;
+  font-weight: 600;
+  font-style: bold;
 }

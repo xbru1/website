@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add new links to the navbar by adding new elements to this array, relative pathings for each page will be automatically determined
     var navLinks = [
-        ["javascript:;", "☰ Xadrian's Site"], // It is necessary to have this link call Javascript with no actual code, otherwise this link will lead somewhere and won't work as intended
-        ["/", "Home"],        
-        ["/pages/games.html", "Odd Games"],                
-        ["/pages/cities.html", "Homonymous Cities"],        
-        ["/pages/wikipedia.html", "Strange Wikipedia Articles"] 
+        ["javascript:;", "Xadrian's Site", "fa-solid fa-square-caret-down"], // It is necessary to have this link call Javascript with no actual code, otherwise this link will lead somewhere and won't work as intended
+        ["/", "Home", "fa-solid fa-house"],        
+        ["/pages/games.html", "Odd Games", "fa-solid fa-gamepad"],
+        ["/pages/cities.html", "Homonymous Cities", "fa-solid fa-city"],        
+        ["/pages/wikipedia.html", "Strange Wikipedia Articles", "fa-brands fa-wikipedia-w"] 
     ];
 
     // Add new footer boxes by adding new elements here, the second element in an array will indicate a hyperlink if present
@@ -20,22 +20,43 @@ document.addEventListener("DOMContentLoaded", function () {
         ["Website source code available here", "https://github.com/xbru1/website"]
     ];
 
+    // Links to embed in <head>
+    var links = [
+        ["preconnect", "https://fonts.googleapis.com", ""],
+        ["preconnect", "https://fonts.gstatic.com", "anonymous"],
+        ["stylesheet", "https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900", ""]
+    ];
     
     // Preparation
     const body = document.getElementsByTagName("body")[0];
     var header = document.createElement("h1");
     var headerDiv = document.createElement("div");
+    var head = document.getElementsByTagName("head")[0];
     var navbar = document.createElement("nav");
     var footer = document.createElement("footer");
+    var fontScript = document.createElement("script");
     var depth = (window.location.pathname.split("/").length - 2); // Helps us calculate the relative path to all links in the navbar 
     var github = false;
 
     body.prepend(header);
     header.append(headerDiv);
-    header.setAttribute("class", "construction glowing");
+    header.setAttribute("class", "construction glowing science-gothic-bold");
     headerDiv.append(document.createTextNode(document.getElementsByTagName("title")[0].textContent));
     body.prepend(navbar);
     body.append(footer);    
+    fontScript.setAttribute("src", "https://kit.fontawesome.com/908306a721.js");
+    fontScript.setAttribute("crossorigin", "anonymous");
+    head.append(fontScript);
+
+    for (var i = 0; i < links.length; i++) {
+        var embed = document.createElement("link");
+        embed.setAttribute("rel", links[i][0]);
+        embed.setAttribute("href", links[i][1]);
+        if (links[i][2]) {
+            embed.setAttribute("crossorigin", links[i][2]);
+        }
+        head.append(embed);
+    }
 
     // Extremely advanced solution to the unpleasant quirks of GitHub Pages
     if (window.location.href.includes("github")) {
@@ -63,6 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Add navbar links
         var a = document.createElement("a");
+        var icon = document.createElement("i");
+        icon.setAttribute("class", navLinks[i][2]);
+        a.append(icon);
         a.setAttribute("href", navLinks[i][0]);
         a.append(document.createTextNode(navLinks[i][1]));
         navbar.append(a);
