@@ -7,7 +7,8 @@
     --bg-special: #707093;
     --main: #f2f2f2; /* Background color of the background of the <main> tag */
     --text: #000000; /* Primary text color */
-    --text-shadow-light: #dbabff;
+    /*--text-shadow-light: #dbabff;*/
+    --text-shadow-light: #655483;
     --text-shadow-light-alt: #7bd966;
     --text-shadow-dark: #000000;
     --border-light: #ffffff;
@@ -69,7 +70,7 @@ nav a {
     &:hover {
         color: var(--bg-dark);
         background-color: var(--bg-light);
-        transform: scale(1.1);
+        /*transform: scale(1.1);*/
         transition: 0.25s;        
     }
 

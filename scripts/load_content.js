@@ -69,8 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var link = navLinks[i][0].split("/");
         if (link[link.length - 1] == window.location.pathname.split("/")[window.location.pathname.split("/").length - 1]) {
-            console.log(navLinks[i][0]);
-            console.log(window.location.pathname);
             a.setAttribute("class", "active");
         }
 
