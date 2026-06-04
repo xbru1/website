@@ -124,8 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
     navbar.firstChild.addEventListener("click", function() {
         if (navbar.className.includes("expanded")) {
             navbar.className = "";
+            document.getElementsByClassName("fa-square-caret-up")[0].setAttribute("class", "fa-square-caret-down svg-inline--fa");
         } else {
             navbar.className += "expanded";
+            document.getElementsByClassName("fa-square-caret-down")[0].setAttribute("class", "fa-square-caret-up svg-inline--fa");
         }
     });
 });
