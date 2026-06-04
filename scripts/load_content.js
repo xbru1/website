@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var header = document.createElement("h1");
     var headerDiv = document.createElement("div");
     var head = document.getElementsByTagName("head")[0];
+    var favicon = document.createElement("link");
     var navbar = document.createElement("nav");
     var footer = document.createElement("footer");
     var fontScript = document.createElement("script");
@@ -40,6 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var github = false;
 
     body.prepend(header);
+    favicon.setAttribute("rel", "icon");
+    favicon.setAttribute("href", findRelativePath("/assets/icon.png", depth));
+    body.append(favicon);
     header.append(headerDiv);
     header.setAttribute("class", "construction glowing science-gothic-bold");
     headerDiv.append(document.createTextNode(document.getElementsByTagName("title")[0].textContent));
@@ -67,8 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // The first link is always meant to expand the nav
     for (var i = 0; i < navLinks.length; i++) {
         // Calculate the relative path to each link
-        for (var j = 1; j <= depth; j++) {
-
+        if (i != 0) {
+            navLinks[i][0] = findRelativePath(navLinks[i][0], depth);
+        }
+        /*for (var j = 1; j <= depth; j++) {
             if (i == 0) {
                 break;
             }
@@ -76,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 navLinks[i][0] = "/" + navLinks[i][0];
             }
             navLinks[i][0] = ".." + navLinks[i][0];
-        }
+        }*/
 
         // Ensure all links are relative paths no matter what
         if (navLinks[i][0].charAt(0) == "/") {
@@ -131,3 +137,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+function findRelativePath(link, depth) {
+    for (var i = 1; i <= depth; i++) {
+        if (i % 1 == 0) {
+            link = "/" + link;
+        }
+        link = ".." + link;
+    }
+    return link;
+}
