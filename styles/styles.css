@@ -413,7 +413,7 @@ figcaption a {
 
 /* Leaflet map */
 #map {
-    height: 500px;
+    height: 35vh;
     justify-content: center;
     margin: auto;
     border: 0.5rem outset var(--bg-special);
@@ -421,9 +421,9 @@ figcaption a {
     background-color: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     #map {
-        margin-left: none;
+        height: 50vh;
     }
 }
 
