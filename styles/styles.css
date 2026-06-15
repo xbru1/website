@@ -3,19 +3,15 @@
     --bg-normal: #d9d9d9;
     --bg-light: #ccccff;
     --bg-dark: #262626;
-    /*--bg-color-special: #c1a54a;*/
     --bg-special: #707093;
-    --main: #f2f2f2; /* Background color of the background of the <main> tag */
-    --text: #000000; /* Primary text color */
-    /*--text-shadow-light: #dbabff;*/
+    --main: #f2f2f2;
+    --text: #000000;
     --text-shadow-light: #655483;
-    --text-shadow-light-alt: #7bd966;
     --text-shadow-dark: #000000;
     --border-light: #ffffff;
     --border-dark: #000000;
     --a-visited: #655483;
     --a: #628699;
-    --nyi: #ff0000;
 }
 
 body {
@@ -61,17 +57,17 @@ nav a {
     margin: 0;
     color: var(--bg-light);
     background-color: var(--bg-dark);
-    padding: 1em;
+    padding: 1.3em;
     padding-right: 0.5em;
     padding-left: 0.5em;
     display: block;
     text-decoration: none;
+
     /* Expand and start glowing on hover */
     &:hover {
         color: var(--bg-dark);
         background-color: var(--bg-light);
-        /*transform: scale(1.1);*/
-        transition: 0.25s;        
+        transition: 0.25s;
     }
 
     &.active {
@@ -79,15 +75,6 @@ nav a {
         background-color: var(--bg-light);
     }
 }
-
-/* Make all NYI links red, making sure to ignore the Home link which should be the first link in the navbar */
-/*nav a[href="/"]:not(:first-child), a[href="./"]:not(:first-child), a[href="../"]:not(:first-child) {
-    color: var(--nyi-color);
-    &:hover {
-        color: var(--bg-color-normal);
-        background-color: var(--nyi-color);
-    }
-}*/
 
 /* The main content has margins on each side so that it is easier to read, and a minimum height to ensure the footer always remains at the bottom */
 main {
@@ -99,10 +86,32 @@ main {
     padding: 1%;
     color: var(--text);
     background-color: var(--main);
-    transition: linear 0.15s; /* This makes resizing the window around feel very smooth */
+    transition: linear 0.15s;
+    /* This makes resizing the window around feel smooth */
     object-fit: contain;
 }
 
+/* Custom hyperlink colors */
+main a {
+    color: var(--a);
+
+    &:visited {
+        color: var(--a-visited);
+    }
+}
+
+/* Header formatting under main */
+main h2 {
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    border-top: 0.1em dashed var(--bg-dark);
+
+    &a {
+        text-decoration: none;
+    }
+}
 
 /* Footer should always appear at the bottom and never be visible from the top of the page*/
 footer {
@@ -122,9 +131,41 @@ footer {
     border-top: 0.5em solid var(--bg-dark);
 }
 
+
+/* Footer and h1 flexboxes */
+footer div,
+h1 div,
+.flexbox {
+    background-color: var(--bg-dark);
+    padding: 0.25em;
+    margin: auto;
+    border: 0.35em outset white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em var(--text-shadow-dark);
+    justify-content: center;
+    text-align: center;
+}
+
+footer div {
+    margin: auto;
+}
+
+footer a {
+    color: white;
+}
+
+/* Text styling and lists */
+b {
+    font-weight: 800;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
 /* Below are some useful classes that apply cool effects, simply apply their respective class to an element to use */
 
-/* Yellow/Black Stripe background pattern */
+/* Stripe background pattern */
 .construction {
     background-image: repeating-linear-gradient(45deg, var(--bg-special) 0, var(--bg-special) 10% 0, var(--bg-dark) 0, var(--bg-dark) 20% 0);
     border-bottom: 0.5em solid var(--bg-dark);
@@ -145,27 +186,6 @@ span.glowing {
 /* Text with a black shadow around it */
 .shadow {
     text-shadow: 0 0 0.2em var(--text-shadow-dark);
-}
-
-/* Footer and h1 flexboxes */
-footer div, h1 div, .flexbox {
-    background-color: var(--bg-dark);
-    padding: 0.25em;
-    margin: auto;
-    border: 0.35em outset white;
-    border-radius: 0.25em;
-    box-shadow: 0 0 1em var(--text-shadow-dark);
-    justify-content: center;
-    text-align: center;
-}
-
-/* Move these below to a better location once Week 4 is graded */
-footer div {
-    margin: auto;
-}
-
-footer a {
-    color: white;
 }
 
 /* Column class with multiple columns*/
@@ -191,7 +211,8 @@ footer a {
 }
 
 /* Grid items */
-.grid div, .grid a {
+.grid div,
+.grid a {
     background-color: var(--bg-dark);
     color: var(--main);
     width: 20vw;
@@ -217,31 +238,12 @@ footer a {
         color: var(--text);
         transition: 0.15s;
     }
-
 }
 
-/* Custom hyperlink colors */
-main a {
-    color: var(--a);
-    &:visited {
-        color: var(--a-visited);
-    }
-}
-
-/* Header formatting under main */
-main h2 {
-    text-align: left;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding-top: 0.5em;
-    border-top: 0.1em dashed var(--bg-dark);
-    &a {
-        text-decoration: none;
-    }
-}
-
+/* Some of these media queries might seem duplicated, but the order does matter */
 @media screen and (max-width: 1200px) {
-    /* Reduce the margins of main to prevent content from being squished */ 
+
+    /* Reduce the margins of main to prevent content from being squished */
     main {
         margin-left: 5%;
         margin-right: 5%;
@@ -253,7 +255,8 @@ main h2 {
         grid-template-columns: 1fr;
     }
 
-    .grid div, .grid a {
+    .grid div,
+    .grid a {
         width: 50vw;
     }
 
@@ -269,6 +272,7 @@ main h2 {
 }
 
 @media screen and (min-width: 1200px) {
+
     /* Since the expand button is just a navbar link, it has to be hidden at higher resolutions */
     nav a:first-child {
         display: none;
@@ -299,6 +303,7 @@ main h2 {
         display: block;
         text-align: left;
         float: none;
+
         &:hover {
             transform: none;
         }
@@ -311,6 +316,14 @@ main h2 {
     }
 }
 
+/* Make right-floating images take up the width of the screen at this low of a resolution */
+@media screen and (max-width: 800px) {
+    .right-float {
+        width: 100%;
+        display: block;
+    }
+}
+
 /* Make main take up almost the whole screen at this low of a width */
 @media screen and (max-width: 600px) {
     main {
@@ -318,74 +331,12 @@ main h2 {
         margin: 0;
         padding-left: 5%;
         padding-right: 5%;
-        border-radius: 0px; 
+        border-radius: 0px;
         border: none;
     }
 }
 
-.flipcard {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: auto;
-    width: 90%;
-    height: 7em;
-    display: flex;
-    perspective: 90%;
-    padding: 0.5em;
-    margin-bottom: 3%;
-    margin-top: 3%;
-}
-
-@media screen and (max-width: 700px) {
-    .flipcard {
-        height: 12em;
-    }
-}
-
-.flipcard-inner { 
-    position: relative;
-    transform-origin: center;
-    text-align: center;
-    transform-style: preserve-3d;
-    transition: 0.5s;
-    width: 100%;
-    height: 100%;
-    border: 0.5em solid var(--bg-dark);
-    border-radius: 0.5em;
-    box-shadow: 0 0 1em var(--bg-dark);
-
-}
-
-/* Flipcards, note that their height will not automatically adjust */
-
-/* Rotate when hovering */
-.flipcard:hover {
-    .flipcard-inner {
-        transform: rotateY(180deg);
-    }
-}
-
-/* Make sure that the two card sides overlap and do not show their back side */
-.flipcard-front, .flipcard-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-.flipcard-front {
-    background-color: var(--bg-dark);
-    color: var(--bg-light);
-}
-
-/* Back side is pre-rotated */
-.flipcard-back {
-    transform: rotateY(180deg);
-    background-color: var(--main);
-}
-
+/* Figcaptions */
 figcaption {
     font-style: italic;
     text-align: center;
@@ -395,31 +346,25 @@ figcaption a {
     font-size: 80%;
 }
 
-b {
-    font-weight: 800;
-}
-
-li {
-    margin-bottom: 0.5em;
-}
-
-
+/* Content with an image on the right and text on the left, place all items within another <div> inside of the element that has this as a class! */
 .img-content-item {
     display: grid;
     align-items: left;
     text-align: left;
-    grid-template-areas: 
+    grid-template-areas:
         "h h"
         "a b"
         "a a"
     ;
 }
 
+/* Put items into respective grid areas */
 .img-content h2 {
     grid-area: h;
 }
 
-.img-content-item p, .img-content-item ul {
+.img-content-item p,
+.img-content-item ul {
     grid-area: a;
 }
 
@@ -429,44 +374,84 @@ li {
     transition: 0.1s;
 }
 
-@media screen and (max-width: 800px ) {
+/* Images take up more of the screen at this width */
+@media screen and (max-width: 1200px) {
     .img-content-item img {
         width: 50%;
     }
 }
 
+/* Images should take up most of the screen width on smaller screens */
+@media screen and (max-width: 800px) {
+    .img-content-item {
+        grid-template-areas:
+            "h h"
+            "b b"
+            "a a"
+        ;
+    }
+
+    .img-content-item img {
+        width: 96%;
+        margin: auto;
+        margin-bottom: 1em;
+    }
+}
+
+/* Google Fonts */
 .science-gothic-regular {
-  font-family: "Science Gothic", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Science Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .science-gothic-bold {
-  font-family: "Science Gothic", sans-serif;
-  font-weight: 600;
-  font-style: bold;
+    font-family: "Science Gothic", sans-serif;
+    font-weight: 600;
+    font-style: bold;
 }
 
+/* Leaflet map */
 #map {
     height: 500px;
     justify-content: center;
     margin: auto;
-    border: 0.75rem outset var(--bg-special);
+    border: 0.5rem outset var(--bg-special);
     border-radius: 0.5rem;
     background-color: none;
 }
 
+@media screen and (max-width: 800px) {
+    #map {
+        margin-left: none;
+    }
+}
+
+/* Prevent Leaflet elements from inheriting a border */
 .leaflet-container img {
     border: none;
 }
 
+/* Tables */
 table {
     width: 70%;
     border-collapse: collapse;
 }
 
-tr, th, td {
+/* Tables */
+tr,
+th,
+td {
     border: 0.1em solid var(--bg-dark);
     text-align: left;
 }
 
+table {
+    border: 0.2em solid var(--bg-dark);
+}
+
+/* Table Header */
+th {
+    color: var(--main);
+    background-color: var(--bg-dark);
+}

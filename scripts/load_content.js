@@ -1,6 +1,6 @@
 // Code written by me without the use of AI; it took around 2 hours to get this all working as intended
 // I have worked with jQuery in the past, but I used only vanilla JavaScript here
-// This script dynamically loads the Navbar, Header, and Footer to save from it changing on each page
+// This script dynamically loads the Navbar, Header, and Footer to ensure consistency and make updates easier
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // [link, text, icon]
     var navLinks = [
         ["javascript:;", "Xadrian's Site", "fa-solid fa-square-caret-down"], // It is necessary to have this link call Javascript with no actual code, otherwise this link will lead somewhere and won't work as intended
-        ["/", "Home", "fa-solid fa-house"],        
+        ["/", "Home", "fa-solid fa-house"],
         ["/pages/games.html", "Odd Games", "fa-solid fa-gamepad"],
-        ["/pages/cities.html", "Homonymous Cities", "fa-solid fa-city"],        
-        ["/pages/wikipedia.html", "Strange Wikipedia Articles", "fa-brands fa-wikipedia-w"] 
+        ["/pages/cities.html", "Homonymous Cities", "fa-solid fa-city"],
+        ["/pages/wikipedia.html", "Strange Wikipedia Articles", "fa-brands fa-wikipedia-w"]
     ];
 
     // Add new footer boxes by adding new elements here, the second element in an array will indicate a hyperlink if present
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ["preconnect", "https://fonts.gstatic.com", "anonymous"],
         ["stylesheet", "https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900", ""]
     ];
-    
+
     // Preparation
     const body = document.getElementsByTagName("body")[0];
     var header = document.createElement("h1");
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     header.setAttribute("class", "construction glowing science-gothic-bold");
     headerDiv.append(document.createTextNode(document.getElementsByTagName("title")[0].textContent));
     body.prepend(navbar);
-    body.append(footer);    
+    body.append(footer);
     fontScript.setAttribute("src", "https://kit.fontawesome.com/908306a721.js");
     fontScript.setAttribute("crossorigin", "anonymous");
     head.append(fontScript);
@@ -75,15 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (i != 0) {
             navLinks[i][0] = findRelativePath(navLinks[i][0], depth);
         }
-        /*for (var j = 1; j <= depth; j++) {
-            if (i == 0) {
-                break;
-            }
-            if (j % 2 == 0) {
-                navLinks[i][0] = "/" + navLinks[i][0];
-            }
-            navLinks[i][0] = ".." + navLinks[i][0];
-        }*/
 
         // Ensure all links are relative paths no matter what
         if (navLinks[i][0].charAt(0) == "/") {
@@ -103,12 +94,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (link[link.length - 1] == window.location.pathname.split("/")[window.location.pathname.split("/").length - 1]) {
             a.setAttribute("class", "active");
         }
-
-        // TODO: Add breadcrumbs
     }
 
     // Add footer
-    for (var i = 0; i < footerItems.length; i++) {        
+    for (var i = 0; i < footerItems.length; i++) {
         var div = document.createElement("div");
 
         // A second element in a footer item indicates that it is a hyperlink, so that must be accounted for
@@ -119,16 +108,15 @@ document.addEventListener("DOMContentLoaded", function () {
             a.setAttribute("target", "_blank");
             a.setAttribute("rel", "noopener noreferrer");
             div.append(a);
-            footer.append(div);
         } else {
             div.append(document.createTextNode(footerItems[i][0]));
-            footer.append(div);
         }
+        footer.append(div);
         footer.setAttribute("class", "construction");
     }
 
     // Expand the navbar at lower widths when the top bar is clicked
-    navbar.firstChild.addEventListener("click", function() {
+    navbar.firstChild.addEventListener("click", function () {
         if (navbar.className.includes("expanded")) {
             navbar.className = "";
             document.getElementsByClassName("fa-square-caret-up")[0].setAttribute("class", "fa-square-caret-down svg-inline--fa");
@@ -139,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Get the relative path to a link based on depth
 function findRelativePath(link, depth) {
     for (var i = 1; i <= depth; i++) {
         if (i % 2 == 0) {
